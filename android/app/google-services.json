@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "818759423219",
+    "firebase_url": "https://spy-party-game-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "spy-party-game",
+    "storage_bucket": "spy-party-game.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:818759423219:android:5603c1d71e3af7ce39d386",
+        "android_client_info": {
+          "package_name": "com.bykrisby.spy"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBItmqcTrjLeqqUXf59E4hpJs5tfZxxtAI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

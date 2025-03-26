@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyABDNoh17fVEkts6TQEIaK0-FuAk6dZCkM</string>
+	<key>GCM_SENDER_ID</key>
+	<string>818759423219</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.bykrisby.spy</string>
+	<key>PROJECT_ID</key>
+	<string>spy-party-game</string>
+	<key>STORAGE_BUCKET</key>
+	<string>spy-party-game.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:818759423219:ios:fdff9d80c380a89039d386</string>
+	<key>DATABASE_URL</key>
+	<string>https://spy-party-game-default-rtdb.europe-west1.firebasedatabase.app</string>
+</dict>
+</plist>
