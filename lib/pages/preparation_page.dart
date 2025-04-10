@@ -17,7 +17,6 @@ import 'package:spy/widgets/set_category.dart';
 import 'package:spy/widgets/set_timer.dart';
 import 'package:spy/widgets/spy_amount.dart';
 import 'package:spy/word_database.dart';
-import 'package:spy/word_database_en.dart';
 
 import '../paddings.dart';
 
@@ -93,9 +92,13 @@ class PreparationPage extends StatelessWidget {
   Future<Word> _getWord(BuildContext context, String? category) async {
     List<Word> wordList = [];
     if (context.mounted) {
-      wordList = context.locale.countryCode == 'DE'
-          ? await WordDatabase().retrieveWords(category: category)
-          : await WordDatabaseEN().retrieveWordsEN();
+      wordList = switch (context.locale.countryCode) {
+        'DE' => await WordDatabase().retrieveWords(database: 'wordsDE', category: category),
+        'US' => await WordDatabase().retrieveWords(database: 'wordsEN', category: category),
+        'RU' => await WordDatabase().retrieveWords(database: 'wordsRU', category: category),
+        'UA' => await WordDatabase().retrieveWords(database: 'wordsUA', category: category),
+        _ => await WordDatabase().retrieveWords(database: 'wordsDE', category: category),
+      };
     }
     return wordList[Random().nextInt(wordList.length - 1)];
   }

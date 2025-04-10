@@ -9,28 +9,30 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'isar/word.dart';
 
 class WordDatabase {
-  Future<List<Word>> retrieveWords({String? category}) async {
+  Future<List<Word>> retrieveWords({required String database, String? category}) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     final Directory dir = await getApplicationDocumentsDirectory();
-    final Isar isar = await Isar.open([WordSchema], directory: dir.path, name: 'wordsDE');
+    final Isar isar = await Isar.open([WordSchema], directory: dir.path, name: database);
 
-    final bool? firstStart = prefs.getBool('firstStart');
+    final bool? firstStart = prefs.getBool('firstStart$database');
 
     List<Word> wordList = [];
 
     if (firstStart == null || firstStart == false) {
-      wordList = await _getWords();
+      wordList = await _getWords(database: database);
 
       await isar.writeTxn(
         () async => await isar.words.putAll(wordList),
       );
 
-      await prefs.setBool('firstStart', true);
+      await prefs.setBool('firstStart$database', true);
     }
+
+    final translatedCategory = 'all'.tr();
 
     await isar.txn(
       () async {
-        if (category != null && category != 'Alle'.tr()) {
+        if (category != null && category != translatedCategory) {
           wordList = await isar.words.filter().categoryContains(category).findAll();
         } else {
           wordList = await isar.words.where().findAll();
@@ -43,9 +45,9 @@ class WordDatabase {
     return wordList;
   }
 
-  Future<void> addWord({required String category, required String word}) async {
+  Future<void> addWord({required String database, required String category, required String word}) async {
     final Directory dir = await getApplicationDocumentsDirectory();
-    final Isar isar = await Isar.open([WordSchema], directory: dir.path, name: 'wordsDE');
+    final Isar isar = await Isar.open([WordSchema], directory: dir.path, name: database);
 
     await isar.writeTxn(
       () async => await isar.words.put(Word(category: category, word: word)),
@@ -54,9 +56,19 @@ class WordDatabase {
     isar.close();
   }
 
-  Future<List<Word>> _getWords() async {
+  Future<void> addAllWords(Map<String, String> wordsMap) async {
     final FirebaseFirestore db = FirebaseFirestore.instance;
-    final docRef = db.collection('database').doc('wordsDE');
+    final docRef = db.collection('database').doc('wordsUA');
+
+    // Dokument aktualisieren oder erstellen
+    await docRef.set(wordsMap, SetOptions(merge: true));
+  }
+
+  Future<List<Word>> _getWords({
+    required String database,
+  }) async {
+    final FirebaseFirestore db = FirebaseFirestore.instance;
+    final docRef = db.collection('database').doc(database);
     Map<String, dynamic>? words = await docRef.get().then(
           (value) => value.data(),
         );

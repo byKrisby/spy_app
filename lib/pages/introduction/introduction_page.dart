@@ -7,11 +7,17 @@ import 'package:spy/blocs/introduction_bloc.dart';
 import 'package:spy/paddings.dart';
 import 'package:spy/widget_extension.dart';
 
-class IntroductionPage extends StatelessWidget {
+class IntroductionPage extends StatefulWidget {
   const IntroductionPage({super.key});
 
   @override
+  State<IntroductionPage> createState() => _IntroductionPageState();
+}
+
+class _IntroductionPageState extends State<IntroductionPage> {
+  @override
   Widget build(BuildContext context) {
+    context.setLocale(context.locale);
     return Scaffold(
       body: SafeArea(
         bottom: true,

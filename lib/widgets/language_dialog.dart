@@ -19,6 +19,14 @@ class LanguageDialog extends StatelessWidget {
             newLocale: Locale('de', 'DE'),
             title: 'Deutsch',
           ),
+          LanguageButton(
+            newLocale: Locale('ru', 'RU'),
+            title: 'Русский',
+          ),
+          LanguageButton(
+            newLocale: Locale('uk', 'UA'),
+            title: 'українська',
+          ),
         ],
       ),
     );

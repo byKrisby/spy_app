@@ -6,7 +6,6 @@ import 'package:spy/paddings.dart';
 import 'package:spy/widget_extension.dart';
 import 'package:spy/widgets/custom_button.dart';
 import 'package:spy/word_database.dart';
-import 'package:spy/word_database_en.dart';
 
 class AddWordDialog extends StatefulWidget {
   const AddWordDialog({required this.category, super.key});
@@ -42,16 +41,34 @@ class _AddWordDialogState extends State<AddWordDialog> {
               CustomButton(
                 title: 'save'.tr(),
                 onPressed: () async {
-                  if (_wordController.text.isNotEmpty) {
-                    context.locale.countryCode == 'DE'
-                        ? await WordDatabase().addWord(
-                            word: _wordController.text,
-                            category: widget.category,
-                          )
-                        : await WordDatabaseEN().addWord(
-                            word: _wordController.text,
-                            category: widget.category,
-                          );
+                  if (_wordController.text.isNotEmpty && context.mounted) {
+                    switch (context.locale.countryCode) {
+                      case 'DE':
+                        await WordDatabase().addWord(
+                          database: 'wordsDE',
+                          word: _wordController.text,
+                          category: widget.category,
+                        );
+                      case 'US':
+                        await WordDatabase().addWord(
+                          database: 'wordsEN',
+                          word: _wordController.text,
+                          category: widget.category,
+                        );
+                      case 'RU':
+                        await WordDatabase().addWord(
+                          database: 'wordsRU',
+                          word: _wordController.text,
+                          category: widget.category,
+                        );
+                      case 'UA':
+                        await WordDatabase().addWord(
+                          database: 'wordsUA',
+                          word: _wordController.text,
+                          category: widget.category,
+                        );
+                    }
+                    ;
                   }
 
                   if (context.mounted) {

@@ -38,7 +38,7 @@ class SettingsPage extends StatelessWidget {
                     width: 300,
                     height: 80,
                     child: CustomButton(
-                      title: 'Impressum',
+                      title: 'legalNotice'.tr(),
                       onPressed: () => launchUrl(Uri.parse('https://krisbanko2.wordpress.com/impressum/')),
                     ).withPadding(Paddings.bottomLarge),
                   ),
@@ -46,7 +46,7 @@ class SettingsPage extends StatelessWidget {
                     width: 300,
                     height: 80,
                     child: CustomButton(
-                      title: 'Datenschutz',
+                      title: 'privacyPolicy'.tr(),
                       onPressed: () => launchUrl(Uri.parse('https://krisbanko2.wordpress.com/datenschutz/')),
                     ).withPadding(Paddings.bottomLarge),
                   ),

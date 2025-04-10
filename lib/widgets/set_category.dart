@@ -71,7 +71,7 @@ class SetCategory extends StatelessWidget {
                           ),
                         ),
                         hintText: 'categories'.tr(),
-                        initialItem: categoryState,
+                        initialItem: 'all'.tr(),
                         items: _buildOptions(context, kategorienZaehler.keys.toList()),
                         onChanged: (String? value) {
                           context.read<CategoryCubit>().changeCategory(value ?? categoryState);
@@ -89,7 +89,7 @@ class SetCategory extends StatelessWidget {
   }
 
   List<String> _buildOptions(BuildContext context, List<String> categories) {
-    categories.insert(0, 'Alle');
+    categories.insert(0, 'all'.tr());
 
     return List.generate(
       categories.length,

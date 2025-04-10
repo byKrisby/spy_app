@@ -17,7 +17,6 @@ import 'package:spy/cubit/word_cubit.dart';
 import 'package:spy/get_it.dart';
 import 'package:spy/routes/app_routes.dart';
 import 'package:spy/word_database.dart';
-import 'package:spy/word_database_en.dart';
 
 import 'firebase_options.dart';
 
@@ -31,15 +30,19 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await WordDatabase().retrieveWords(database: 'wordsDE');
+  await WordDatabase().retrieveWords(database: 'wordsEN');
+  await WordDatabase().retrieveWords(database: 'wordsRU');
+  await WordDatabase().retrieveWords(database: 'wordsUK');
 
-  await WordDatabase().retrieveWords();
-  await WordDatabaseEN().retrieveWordsEN();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then(
     (value) => runApp(
       EasyLocalization(
         supportedLocales: const [
           Locale('en', 'US'),
           Locale('de', 'DE'),
+          Locale('ru', 'RU'),
+          Locale('uk', 'UA'),
         ],
         path: 'assets/translations',
         fallbackLocale: const Locale('de', 'DE'),

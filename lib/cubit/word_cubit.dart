@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spy/isar/word.dart';
 import 'package:spy/word_database.dart';
-import 'package:spy/word_database_en.dart';
 
 class WordCubit extends Cubit<List<Word>> {
   WordCubit() : super([]);
@@ -11,9 +10,13 @@ class WordCubit extends Cubit<List<Word>> {
   void getWords(BuildContext context) async {
     List<Word> wordList = [];
     if (context.mounted) {
-      wordList = context.locale.countryCode == 'DE'
-          ? await WordDatabase().retrieveWords()
-          : await WordDatabaseEN().retrieveWordsEN();
+      wordList = switch (context.locale.countryCode) {
+        'RU' => await WordDatabase().retrieveWords(database: 'wordsRU'),
+        'US' => await WordDatabase().retrieveWords(database: 'wordsEN'),
+        'DE' => await WordDatabase().retrieveWords(database: 'wordsDE'),
+        'UA' => await WordDatabase().retrieveWords(database: 'wordsUA'),
+        _ => await WordDatabase().retrieveWords(database: 'wordsDE'),
+      };
     }
     emit(wordList);
   }

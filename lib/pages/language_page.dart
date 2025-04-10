@@ -37,12 +37,12 @@ class LanguagePage extends StatelessWidget {
   }
 
   String getTitle(String languageCode) {
-    if (languageCode == 'de') {
-      return 'Deutsch';
-    } else if (languageCode == 'en') {
-      return 'English';
-    } else {
-      return 'German';
-    }
+    return switch (languageCode) {
+      'de' => 'Deutsch',
+      'en' => 'English',
+      'ru' => 'Русский',
+      'uk' => 'українська',
+      _ => 'Deutsch',
+    };
   }
 }

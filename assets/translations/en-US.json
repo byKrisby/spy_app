@@ -42,5 +42,7 @@
     "gameCardCitizenDescription": "Try to identify the Spy or Spies.\n",
     "introductionSkip": "SKIP",
     "introductionDone": "DONE",
-  "player": "Player"
+  "player": "Player",
+  "legalNotice": "Legal Notice",
+  "privacyPolicy": "Privacy Policy"
 }

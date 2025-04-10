@@ -42,5 +42,7 @@
   "gameCardCitizenDescription": "Versuche, den Spion oder die Spione zu entlarven.\n",
   "introductionSkip": "Ende",
   "introductionDone": "Starten",
-  "player": "Spieler"
+  "player": "Spieler",
+  "legalNotice": "Impressum",
+  "privacyPolicy": "Datenschutz"
 }
