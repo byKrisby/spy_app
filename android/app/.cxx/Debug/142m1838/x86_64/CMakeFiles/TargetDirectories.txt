@@ -1,0 +1,2 @@
+/Users/kris/Projekte/spy/android/app/.cxx/Debug/142m1838/x86_64/CMakeFiles/rebuild_cache.dir
+/Users/kris/Projekte/spy/android/app/.cxx/Debug/142m1838/x86_64/CMakeFiles/edit_cache.dir

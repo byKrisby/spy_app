@@ -47,7 +47,7 @@ class SetTimer extends StatelessWidget {
                   ),
                 ).withPadding(Paddings.bottomSmaller).withPadding(Paddings.leftLarge),
                 SizedBox(
-                  width: 100,
+                  width: 120,
                   height: 100,
                   child: CustomDropdown(
                     decoration: CustomDropdownDecoration(

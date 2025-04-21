@@ -20,17 +20,25 @@ class _IntroductionPageState extends State<IntroductionPage> {
     context.setLocale(context.locale);
     return Scaffold(
       body: SafeArea(
-        bottom: true,
+        bottom: false,
         top: false,
         child: IntroductionScreen(
           globalBackgroundColor: const Color.fromARGB(255, 26, 39, 34).withValues(alpha: 0.7),
-          done: Text('introductionDone'.tr(), style: TextStyle(color: Colors.white)),
+          done: Text(
+            'introductionDone'.tr(),
+            style: TextStyle(color: Colors.white, overflow: TextOverflow.clip),
+            maxLines: 1,
+          ),
           onDone: () => context.read<IntroductionBloc>().add(const IntroductionEvent.hideIntroduction()),
           showSkipButton: true,
           showDoneButton: true,
-          skip: Text('introductionSkip'.tr(), style: TextStyle(color: Colors.white)),
+          skip: Text(
+            'introductionSkip'.tr(),
+            style: TextStyle(color: Colors.white, overflow: TextOverflow.clip),
+            maxLines: 1,
+          ),
           showNextButton: false,
-          dotsFlex: 3,
+          dotsFlex: 2,
           dotsDecorator: DotsDecorator(color: Colors.white, activeColor: Colors.red),
           pages: [
             PageViewModel(
@@ -66,27 +74,11 @@ class _IntroductionPageState extends State<IntroductionPage> {
                 size: 150,
                 color: Colors.grey,
               ).withPadding(Paddings.verticalLarge + Paddings.topLarger),
-              bodyWidget: Column(
-                children: [
-                  Text(
-                    'introPage3'.tr(),
-                    softWrap: true,
-                    style: TextStyle(fontSize: 20),
-                    textAlign: TextAlign.center,
-                  ),
-                  Text(
-                    'introPage3.1'.tr(),
-                    softWrap: true,
-                    style: TextStyle(fontSize: 18),
-                    textAlign: TextAlign.center,
-                  ),
-                  Text(
-                    'introPage3.2'.tr(),
-                    softWrap: true,
-                    style: TextStyle(fontSize: 18),
-                    textAlign: TextAlign.center,
-                  ),
-                ],
+              bodyWidget: Text(
+                'introPage3'.tr() + 'introPage3.1'.tr() + 'introPage3.2'.tr(),
+                softWrap: true,
+                style: TextStyle(fontSize: 18),
+                textAlign: TextAlign.center,
               ),
             ),
             PageViewModel(
@@ -112,11 +104,11 @@ class _IntroductionPageState extends State<IntroductionPage> {
                 color: Colors.grey,
               ).withPadding(Paddings.verticalLarge + Paddings.topLarger),
               bodyWidget: Center(
-                heightFactor: 1.5,
+                heightFactor: 1,
                 child: Text(
                   'introPage5'.tr(),
                   softWrap: true,
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(fontSize: 18),
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -132,7 +124,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
                 child: Text(
                   'introPage6'.tr(),
                   softWrap: true,
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(fontSize: 18),
                   textAlign: TextAlign.center,
                 ),
               ),

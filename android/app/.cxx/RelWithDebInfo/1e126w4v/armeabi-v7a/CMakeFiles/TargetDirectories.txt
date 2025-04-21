@@ -1,0 +1,2 @@
+/Users/kris/Projekte/spy/android/app/.cxx/RelWithDebInfo/1e126w4v/armeabi-v7a/CMakeFiles/rebuild_cache.dir
+/Users/kris/Projekte/spy/android/app/.cxx/RelWithDebInfo/1e126w4v/armeabi-v7a/CMakeFiles/edit_cache.dir

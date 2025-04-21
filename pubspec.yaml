@@ -2,7 +2,7 @@ name: spy
 description: "Die neue GIGA SPY APP"
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.1.1+12
+version: 1.1.1+13
 
 environment:
   sdk: '>=3.3.4 <4.0.0'
@@ -26,7 +26,6 @@ dependencies:
   flutter_native_splash: ^2.4.0
   easy_localization: ^3.0.6
   flutter_launcher_icons: ^0.14.1
-  fluttertoast: ^8.2.5
   swipable_stack: ^2.0.0
   flutter_timer_countdown: ^1.0.7
   flip_card: ^0.7.0

@@ -68,7 +68,6 @@ class _AddWordDialogState extends State<AddWordDialog> {
                           category: widget.category,
                         );
                     }
-                    ;
                   }
 
                   if (context.mounted) {
