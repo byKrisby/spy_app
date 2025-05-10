@@ -19,6 +19,7 @@ import 'package:spy/routes/app_routes.dart';
 import 'package:spy/word_database.dart';
 
 import 'firebase_options.dart';
+import 'languages.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,6 +31,12 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  await WordDatabase().getDBVersion('wordsDE');
+  await WordDatabase().getDBVersion('wordsEN');
+  await WordDatabase().getDBVersion('wordsRU');
+  await WordDatabase().getDBVersion('wordsUK');
+
   await WordDatabase().retrieveWords(database: 'wordsDE');
   await WordDatabase().retrieveWords(database: 'wordsEN');
   await WordDatabase().retrieveWords(database: 'wordsRU');
@@ -38,12 +45,7 @@ void main() async {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then(
     (value) => runApp(
       EasyLocalization(
-        supportedLocales: const [
-          Locale('en', 'US'),
-          Locale('de', 'DE'),
-          Locale('ru', 'RU'),
-          Locale('uk', 'UA'),
-        ],
+        supportedLocales: supportedLocales,
         path: 'assets/translations',
         fallbackLocale: const Locale('de', 'DE'),
         child: const MyApp(),

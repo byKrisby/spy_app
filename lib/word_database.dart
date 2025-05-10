@@ -35,7 +35,7 @@ class WordDatabase {
         if (category != null && category != translatedCategory) {
           wordList = await isar.words.filter().categoryContains(category).findAll();
         } else {
-          wordList = await isar.words.where().findAll();
+          wordList = await isar.words.where().distinctByWord(caseSensitive: false).findAll();
         }
       },
     );
@@ -56,9 +56,9 @@ class WordDatabase {
     isar.close();
   }
 
-  Future<void> addAllWords(Map<String, String> wordsMap) async {
+  Future<void> addAllWords(Map<String, String> wordsMap, String database) async {
     final FirebaseFirestore db = FirebaseFirestore.instance;
-    final docRef = db.collection('database').doc('wordsUA');
+    final docRef = db.collection('database').doc(database);
 
     // Dokument aktualisieren oder erstellen
     await docRef.set(wordsMap, SetOptions(merge: true));
@@ -97,5 +97,41 @@ class WordDatabase {
       }
     }
     return kategorienZaehler;
+  }
+
+  Future<int> getDBVersion(String database) async {
+    final FirebaseFirestore db = FirebaseFirestore.instance;
+    final docRef = db.collection('database').doc('version');
+    Map<String, dynamic>? version = await docRef.get().then(
+          (value) => value.data(),
+        );
+
+    final int? localDBVersion = await SharedPreferences.getInstance().then(
+      (prefs) => prefs.getInt('localDBVersion'),
+    );
+
+    if (localDBVersion == null || localDBVersion < version?['version']) {
+      final Directory dir = await getApplicationDocumentsDirectory();
+      final Isar isar = await Isar.open([WordSchema], directory: dir.path, name: database);
+
+      List<Word> wordList = [];
+      wordList = await _getWords(database: database);
+
+      await isar.writeTxn(
+        () async => await isar.words.clear(),
+      );
+
+      await isar.writeTxn(
+        () async => await isar.words.putAll(wordList),
+      );
+
+      await SharedPreferences.getInstance().then(
+        (prefs) => prefs.setInt('localDBVersion', version?['version']),
+      );
+
+      isar.close();
+    }
+
+    return version?['version'] ?? 0;
   }
 }

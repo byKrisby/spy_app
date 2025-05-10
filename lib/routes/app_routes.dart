@@ -33,7 +33,7 @@ final GoRouter router = GoRouter(
         GoRoute(
           path: 'prep',
           name: 'prep',
-          builder: (BuildContext context, GoRouterState state) => const PreparationPage(),
+          builder: (BuildContext context, GoRouterState state) => PreparationPage(),
         ),
         GoRoute(
           path: 'game',

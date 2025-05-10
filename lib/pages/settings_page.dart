@@ -39,7 +39,7 @@ class SettingsPage extends StatelessWidget {
                     height: 80,
                     child: CustomButton(
                       title: 'legalNotice'.tr(),
-                      onPressed: () => launchUrl(Uri.parse('https://krisbanko2.wordpress.com/impressum/')),
+                      onPressed: () => launchUrl(Uri.parse('https://jeckmedia.de/impressum/')),
                     ).withPadding(Paddings.bottomLarge),
                   ),
                   SizedBox(
@@ -47,7 +47,7 @@ class SettingsPage extends StatelessWidget {
                     height: 80,
                     child: CustomButton(
                       title: 'privacyPolicy'.tr(),
-                      onPressed: () => launchUrl(Uri.parse('https://krisbanko2.wordpress.com/datenschutz/')),
+                      onPressed: () => launchUrl(Uri.parse('https://jeckmedia.de/datenschutzerklaerung/')),
                     ).withPadding(Paddings.bottomLarge),
                   ),
                 ],

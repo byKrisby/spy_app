@@ -57,6 +57,7 @@ class _CardPageState extends State<CardPage> {
                                       fontWeight: FontWeight.w900,
                                       letterSpacing: 2,
                                     ),
+                                    textAlign: TextAlign.center,
                                   ),
                                   Text(
                                     kategorienZaehler.values.elementAt(index).toString(),

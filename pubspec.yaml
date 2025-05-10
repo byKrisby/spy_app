@@ -69,6 +69,10 @@ flutter:
       fonts:
         - asset: fonts/Lexend.ttf
           weight: 900
+    - family: CustomIcons
+      fonts:
+        - asset: assets/icons/icons.ttf
+          weight: 400
 
   assets:
     - images/app_logo.png
@@ -77,6 +81,7 @@ flutter:
     - images/tap_hand2.png
     - images/swipe_hand.png
     - images/
+    - assets/icons/icons.ttf
 
 flutter_launcher_icons:
   android: "launcher_icon"

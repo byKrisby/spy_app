@@ -44,5 +44,10 @@
   "introductionDone": "Starten",
   "player": "Spieler",
   "legalNotice": "Impressum",
-  "privacyPolicy": "Datenschutz"
+  "privacyPolicy": "Datenschutz",
+  "newsTitle": "Aktuelles",
+  "helpAdTitle": "Hilf uns, indem du Werbung anschaust",
+  "helpAdContent": "Ihr könnt jetzt während ihr spielt und miteinander redet eine Werbung laufen lassen um uns zu unterstützen. Somit kann SPY auch weiterhin kostenfrei bleiben.",
+  "noThanks": "Nein danke",
+  "yeahSure": "Klar, gerne"
 }
